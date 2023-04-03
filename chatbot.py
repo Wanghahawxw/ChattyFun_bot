@@ -2,11 +2,12 @@
 Author: huibing 13728166372@163.com
 Date: 2023-03-28 21:09:05
 LastEditors: huibing 13728166372@163.com
-LastEditTime: 2023-03-29 17:06:20
+LastEditTime: 2023-04-03 15:09:29
 FilePath: /chatbot10/chatbot.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
 import configparser
+import os
 import random
 import pyodbc
 import spotipy
@@ -15,17 +16,26 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
 # 从 config.ini 文件中读取配置信息
-config = configparser.ConfigParser()
-config.read('config.ini')
+# config = configparser.ConfigParser()
+# config.read('config.ini')
 
-telegram_api_token = config.get('TELEGRAM', 'ACCESS_TOKEN')
-azure_sql_server = config.get('AZURE_SQL', 'SERVER')
-azure_sql_database = config.get('AZURE_SQL', 'DATABASE')
-azure_sql_user = config.get('AZURE_SQL', 'USER')
-azure_sql_password = config.get('AZURE_SQL', 'PASSWORD')
-azure_sql_driver = config.get('AZURE_SQL', 'DRIVER')
-spotify_client_id = config.get('SPOTIFY', 'CLIENT_ID')
-spotify_client_secret = config.get('SPOTIFY', 'CLIENT_SECRET')
+# telegram_api_token = config.get('TELEGRAM', 'ACCESS_TOKEN')
+# azure_sql_server = config.get('AZURE_SQL', 'SERVER')
+# azure_sql_database = config.get('AZURE_SQL', 'DATABASE')
+# azure_sql_user = config.get('AZURE_SQL', 'USER')
+# azure_sql_password = config.get('AZURE_SQL', 'PASSWORD')
+# azure_sql_driver = config.get('AZURE_SQL', 'DRIVER')
+# spotify_client_id = config.get('SPOTIFY', 'CLIENT_ID')
+# spotify_client_secret = config.get('SPOTIFY', 'CLIENT_SECRET')
+
+telegram_api_token = os.environ.get('TELEGRAM_ACCESS_TOKEN')
+azure_sql_server = os.environ.get('AZURE_SQL_SERVER')
+azure_sql_database = os.environ.get('AZURE_SQL_DATABASE')
+azure_sql_user = os.environ.get('AZURE_SQL_USER')
+azure_sql_password = os.environ.get('AZURE_SQL_PASSWORD')
+azure_sql_driver = os.environ.get('AZURE_SQL_DRIVER')
+spotify_client_id = os.environ.get('SPOTIFY_CLIENT_ID')
+spotify_client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
 
 # 创建数据库连接字符串
 connection_string = f"DRIVER={azure_sql_driver};SERVER={azure_sql_server};DATABASE={azure_sql_database};UID={azure_sql_user};PWD={azure_sql_password}"
