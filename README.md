@@ -1,1 +1,1 @@
-# ChattyFun_bot
+Telegram ChartBot Readme
