@@ -1,5 +1,4 @@
 python-telegram-bot==13.9
 configparser
-pyodbc
 requests
 spotipy

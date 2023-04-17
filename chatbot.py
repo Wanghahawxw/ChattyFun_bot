@@ -9,7 +9,6 @@ Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查�
 import configparser
 import os
 import random
-import pyodbc
 import spotipy
 import requests
 from spotipy.oauth2 import SpotifyClientCredentials
